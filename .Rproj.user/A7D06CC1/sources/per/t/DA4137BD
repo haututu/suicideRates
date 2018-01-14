@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515209537624.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "6|25|42|0|\n44|29|65|0|\n",
+    "hash" : "507391381",
+    "id" : "DA4137BD",
+    "lastKnownWriteTime" : 1515279742,
+    "last_content_update" : 1515279742494,
+    "path" : "~/projects/suicideRates/tabulizerTesting.R",
+    "project_path" : "tabulizerTesting.R",
+    "properties" : {
+        "cursorPosition" : "87,10",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
