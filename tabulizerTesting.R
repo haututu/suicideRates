@@ -100,6 +100,8 @@ region <- full_join(region, pop, by = c("category", "year")) %>%
   mutate(rate = num / pop * 10000, measure = factor("region")) %>%
   select(-pop)
 
+##########################Get ethnicity data
+
 ##########################Merge data
 dat <- rbind(age, region[,colnames(age)])
 

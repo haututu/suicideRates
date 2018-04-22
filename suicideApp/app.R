@@ -16,24 +16,32 @@ dat <- readRDS("dat.RDS")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-   
+  
    # Application title
    titlePanel("Suicide Stats Explorer"),
+   
+   p("Suicide statistics are difficult to access online. 
+     This app allows you to 'slice 'n dice' these stats in one place. 
+     It is a very early development version so likely to change substantially."),
    
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
       sidebarPanel(
-         sliderInput("bins",
-                     "Number of bins:",
-                     min = 1,
-                     max = 50,
-                     value = 30),
-         selectInput("measureSelect",
-                     "Select measure",
-                     levels(dat$measure)),
-         selectInput("yearSelect",
-                     "Select year",
-                     levels(dat$year))
+        radioButtons("viewSelect",
+                    "Select view mode",
+                    c("Time series", "Cross section")),
+        selectInput("measureSelect",
+                    "Select measure",
+                    levels(dat$measure)),
+        selectInput("yearSelect",
+                    "Select year",
+                    levels(dat$year)),
+        selectInput("categorySelect",
+                    "Select category",
+                    levels(dat$category),
+                    multiple = TRUE),
+        actionButton("email", "Contact author")
+         
       ),
       
       # Show a plot of the generated distribution
@@ -47,15 +55,40 @@ ui <- fluidPage(
 server <- function(input, output) {
    
    output$distPlot <- renderPlotly({
-     ggplotly(
-      ggplot(filter(dat, measure == input$measureSelect & year == input$yearSelect), aes(x=category, y=rate)) +
-        geom_bar(stat = "identity") +
-        labs(
-          y = "Rate per 10,000"
-        ) +
-        theme_classic()
-      )
+     if (input$viewSelect == "Cross section") {
+       ggplotly(
+         ggplot(filter(dat, 
+                       measure == input$measureSelect & 
+                         year == input$yearSelect &
+                         category != "Off Shore"), 
+                aes(x=category, y=rate)) +
+           geom_bar(stat = "identity") +
+           labs(
+             y = "Rate per 10,000"
+           ) +
+           theme_classic() +
+           theme(
+             axis.text.x = element_text(angle = 45, hjust = 1)
+           )
+       ) 
+     } else {
+       ggplot(filter(dat, 
+                     measure == input$measureSelect & 
+                       category %in% input$categorySelect &
+                       category != "Off Shore"), 
+              aes(x=year, y=rate, group=category, color=category)) +
+         geom_point() +
+         geom_line() +
+         labs(
+           y = "Rate per 10,000"
+         ) +
+         theme_classic() +
+         theme(
+           axis.text.x = element_text(angle = 45, hjust = 1)
+         )
+     }
    })
+   
 }
 
 # Run the application 
