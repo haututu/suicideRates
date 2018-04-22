@@ -1,0 +1,221 @@
+category,year,pop
+Northland,2008,156300
+Northland,2009,158200
+Northland,2010,160600
+Northland,2011,162500
+Northland,2012,163500
+Northland,2013,164700
+Northland,2014,166000
+Northland,2015,168300
+Northland,2016,171400
+Northland,2017,175400
+Waitemata,2008,517400
+Waitemata,2009,523600
+Waitemata,2010,530700
+Waitemata,2011,538500
+Waitemata,2012,545400
+Waitemata,2013,552800
+Waitemata,2014,562600
+Waitemata,2015,575600
+Waitemata,2016,590800
+Waitemata,2017,606000
+Auckland,2008,436000
+Auckland,2009,441000
+Auckland,2010,445900
+Auckland,2011,451700
+Auckland,2012,456000
+Auckland,2013,460500
+Auckland,2014,471900
+Auckland,2015,490000
+Auckland,2016,507200
+Auckland,2017,523500
+Counties Manukau,2008,467400
+Counties Manukau,2009,472900
+Counties Manukau,2010,478900
+Counties Manukau,2011,485600
+Counties Manukau,2012,491500
+Counties Manukau,2013,496300
+Counties Manukau,2014,509200
+Counties Manukau,2015,521700
+Counties Manukau,2016,534300
+Counties Manukau,2017,546600
+Waikato,2008,357500
+Waikato,2009,362000
+Waikato,2010,366800
+Waikato,2011,371300
+Waikato,2012,374800
+Waikato,2013,377900
+Waikato,2014,383500
+Waikato,2015,390600
+Waikato,2016,399600
+Waikato,2017,408800
+Lakes,2008,101500
+Lakes,2009,101800
+Lakes,2010,102600
+Lakes,2011,103100
+Lakes,2012,103300
+Lakes,2013,103200
+Lakes,2014,103600
+Lakes,2015,104800
+Lakes,2016,106700
+Lakes,2017,108500
+Bay of Plenty,2008,205900
+Bay of Plenty,2009,208400
+Bay of Plenty,2010,211000
+Bay of Plenty,2011,213200
+Bay of Plenty,2012,213900
+Bay of Plenty,2013,215000
+Bay of Plenty,2014,217400
+Bay of Plenty,2015,221500
+Bay of Plenty,2016,226700
+Bay of Plenty,2017,231900
+Tairawhiti,2008,46000
+Tairawhiti,2009,46300
+Tairawhiti,2010,46700
+Tairawhiti,2011,46800
+Tairawhiti,2012,47000
+Tairawhiti,2013,47000
+Tairawhiti,2014,47100
+Tairawhiti,2015,47400
+Tairawhiti,2016,47900
+Tairawhiti,2017,48500
+Taranaki,2008,108400
+Taranaki,2009,109500
+Taranaki,2010,110800
+Taranaki,2011,112000
+Taranaki,2012,112900
+Taranaki,2013,113800
+Taranaki,2014,115000
+Taranaki,2015,115900
+Taranaki,2016,116800
+Taranaki,2017,118100
+Hawke's Bay,2008,153400
+Hawke's Bay,2009,154400
+Hawke's Bay,2010,156200
+Hawke's Bay,2011,157200
+Hawke's Bay,2012,157400
+Hawke's Bay,2013,157900
+Hawke's Bay,2014,158800
+Hawke's Bay,2015,159900
+Hawke's Bay,2016,161500
+Hawke's Bay,2017,163900
+Whanganui,2008,63200
+Whanganui,2009,63100
+Whanganui,2010,63100
+Whanganui,2011,63000
+Whanganui,2012,62400
+Whanganui,2013,62300
+Whanganui,2014,62200
+Whanganui,2015,62600
+Whanganui,2016,63000
+Whanganui,2017,64100
+Mid Central,2008,164500
+Mid Central,2009,165500
+Mid Central,2010,166600
+Mid Central,2011,167800
+Mid Central,2012,168500
+Mid Central,2013,168900
+Mid Central,2014,170300
+Mid Central,2015,172100
+Mid Central,2016,174200
+Mid Central,2017,176600
+Hutt,2008,141100
+Hutt,2009,141700
+Hutt,2010,142400
+Hutt,2011,142900
+Hutt,2012,142500
+Hutt,2013,142500
+Hutt,2014,143400
+Hutt,2015,144000
+Hutt,2016,145900
+Hutt,2017,147900
+Capital and Coast,2008,282500
+Capital and Coast,2009,285300
+Capital and Coast,2010,287700
+Capital and Coast,2011,290400
+Capital and Coast,2012,292200
+Capital and Coast,2013,293500
+Capital and Coast,2014,296700
+Capital and Coast,2015,301100
+Capital and Coast,2016,306700
+Capital and Coast,2017,312700
+Wairarapa,2008,40200
+Wairarapa,2009,40600
+Wairarapa,2010,41200
+Wairarapa,2011,41800
+Wairarapa,2012,42100
+Wairarapa,2013,42400
+Wairarapa,2014,42800
+Wairarapa,2015,43200
+Wairarapa,2016,43600
+Wairarapa,2017,44500
+Nelson Marlborough,2008,135800
+Nelson Marlborough,2009,137000
+Nelson Marlborough,2010,138500
+Nelson Marlborough,2011,140500
+Nelson Marlborough,2012,141300
+Nelson Marlborough,2013,142200
+Nelson Marlborough,2014,143100
+Nelson Marlborough,2015,144800
+Nelson Marlborough,2016,146400
+Nelson Marlborough,2017,148800
+West Coast,2008,32400
+West Coast,2009,32700
+West Coast,2010,32800
+West Coast,2011,33100
+West Coast,2012,33100
+West Coast,2013,33000
+West Coast,2014,32800
+West Coast,2015,32700
+West Coast,2016,32500
+West Coast,2017,32500
+Canterbury,2008,497400
+Canterbury,2009,503900
+Canterbury,2010,510500
+Canterbury,2011,501500
+Canterbury,2012,497800
+Canterbury,2013,504300
+Canterbury,2014,515100
+Canterbury,2015,526700
+Canterbury,2016,539600
+Canterbury,2017,551400
+South Canterbury,2008,55500
+South Canterbury,2009,55800
+South Canterbury,2010,56200
+South Canterbury,2011,56700
+South Canterbury,2012,57100
+South Canterbury,2013,57600
+South Canterbury,2014,58100
+South Canterbury,2015,58600
+South Canterbury,2016,59200
+South Canterbury,2017,59600
+Southern,2008,297000
+Southern,2009,298700
+Southern,2010,301000
+Southern,2011,303900
+Southern,2012,304900
+Southern,2013,306400
+Southern,2014,309900
+Southern,2015,314000
+Southern,2016,318900
+Southern,2017,324300
+Total,2008,4259800
+Total,2009,4302600
+Total,2010,4350700
+Total,2011,4384000
+Total,2012,4408100
+Total,2013,4442100
+Total,2014,4509700
+Total,2015,4595700
+Total,2016,4693200
+Total,2017,4793900
+Off Shore,2008,420
+Off Shore,2009,400
+Off Shore,2010,380
+Off Shore,2011,360
+Off Shore,2012,340
+Off Shore,2013,320
+Off Shore,2014,330
+Off Shore,2015,310
+Off Shore,2016,310
+Off Shore,2017,300

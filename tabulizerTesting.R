@@ -1,4 +1,6 @@
 library(tabulizer)
+library(magrittr)
+library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(plotly)
@@ -42,7 +44,8 @@ getUrl <- function(year){
   return(out)
 }
 
-getTables <- function(urls) {
+#Inconsistent document layout means I hardcode different page references :(
+getAgeTables <- function(urls) {
   
   out <- data.frame()
   
@@ -59,30 +62,56 @@ getTables <- function(urls) {
     
   }
   
-  colnames(out) <- c("year", "agegp", "num", "rate")
+  colnames(out) <- c("year", "category", "num", "rate")
   
   return(out)
   
 }
 
+#This allows you to pull any page from the latest release
+getLatestTable <- function(page) {
+  as.data.frame(extract_tables(urls[length(urls)], pages = page))
+}
+
+#Generate URLS and name
 urls <- getUrl(2011:2017)
 names(urls) <- 2011:2017
 
-data <- getTables(urls) %>% 
-          filter(!(agegp == "" | num == "" | agegp == "5-9"))
+##########################Get age data
+age <- getAgeTables(urls) %>% 
+  filter(!(category == "" | num == "" | category == "5-9"))
 
-data[c("agegp", "year")] <- lapply(data[c("agegp", "year")], as.ordered)
-data[c("num", "rate")] <- lapply(data[c("num", "rate")], function(x) {as.numeric(levels(x))[x]})
+age[c("category", "year")] <- lapply(age[c("category", "year")], as.ordered)
+age[c("num", "rate")] <- lapply(age[c("num", "rate")], function(x) {as.numeric(levels(x))[x]})
+age %<>% mutate(measure = factor("age"))
 
-ggplot(filter(data, agegp %in% c("20-24", "Total")), aes(x=year, y=rate, group=agegp)) +
-  geom_line()
+##########################Get region data (page 6)
+region <- filter(getLatestTable(6), X1 != "DHB Region") %>%
+  select(-X12)
+colnames(region) <- c("category", 2008:2017)
+region <- gather(region, "year", "num", 2:11) %>%
+  mutate(num = as.numeric(num))
 
-ggplotly(ggplot(data, aes(x=year, y=rate, group=agegp, color=agegp)) +
+#Load population data from NZ.Stat to calculate rates for regions
+pop <- read.csv("regionalPopulation.csv") %>%
+  mutate(year = as.factor(year))
+
+region <- full_join(region, pop, by = c("category", "year")) %>%
+  mutate(rate = num / pop * 10000, measure = factor("region")) %>%
+  select(-pop)
+
+##########################Merge data
+dat <- rbind(age, region[,colnames(age)])
+
+saveRDS(dat, "suicideApp/dat.RDS")
+
+##########################Playing around with graphs
+ggplotly(ggplot(age, aes(x=year, y=rate, group=agegp, color=agegp)) +
            geom_line() +
            theme_classic()
          )
 
-ggplotly(ggplot(filter(data, agegp != "Total"), aes(x=year, y=num, group=agegp, color=agegp)) +
+ggplotly(ggplot(filter(age, agegp != "Total"), aes(x=year, y=num, group=agegp, color=agegp)) +
            geom_line() +
            theme_minimal()
          )
