@@ -70,7 +70,7 @@ getAgeTables <- function(urls) {
 
 #This allows you to pull any page from the latest release
 getLatestTable <- function(page) {
-  as.data.frame(extract_tables(urls[length(urls)], pages = page))
+  extract_tables(urls[length(urls)], pages = page)
 }
 
 #Generate URLS and name
@@ -86,7 +86,7 @@ age[c("num", "rate")] <- lapply(age[c("num", "rate")], function(x) {as.numeric(l
 age %<>% mutate(measure = factor("age"))
 
 ##########################Get region data (page 6)
-region <- filter(getLatestTable(6), X1 != "DHB Region") %>%
+region <- filter(data.frame(getLatestTable(6)), X1 != "DHB Region") %>%
   select(-X12)
 colnames(region) <- c("category", 2008:2017)
 region <- gather(region, "year", "num", 2:11) %>%
@@ -102,8 +102,49 @@ region <- full_join(region, pop, by = c("category", "year")) %>%
 
 ##########################Get ethnicity data
 
+#Found it easier to get the rates and numbers seperate
+#Start with getting the rates
+ethnicity.rate <- data.frame(getLatestTable(3)[[1]]) %>%
+  select(X2, X6, X9, X12, X14)
+
+ethnicity.rate <- ethnicity.rate[3:length(ethnicity.rate$X2),] %>%
+  mutate(X14 = as.numeric(
+    purrr::map(
+      strsplit(as.character(X14), " "), 2
+      )
+    ),
+    X2 = 2008:2017
+    )
+      
+colnames(ethnicity.rate) <- c("year", "asian", "maori", "pacific", "european and other")
+
+ethnicity.rate <- gather(ethnicity.rate, "category", "rate", 2:5) %>%
+  mutate(measure = "ethnicity")
+
+#Now get the counts/numbers
+ethnicity.count <- data.frame(getLatestTable(3)[[1]]) %>%
+  select(X2, X4, X7, X8, X11, X14) %>%
+  mutate(X9 = paste(as.character(X7), as.character(X8), sep = "")) %>%
+  select(-X7, -X8)
+
+ethnicity.count <- ethnicity.count[3:length(ethnicity.count$X2),] %>%
+  mutate(X14 = as.numeric(
+    purrr::map(
+      strsplit(as.character(X14), " "), 1
+    )
+  ),
+  X2 = 2008:2017
+  )
+
+colnames(ethnicity.count) <- c("year", "asian", "pacific", "european and other", "maori")
+
+ethnicity.count <- gather(ethnicity.count, "category", "num", 2:5)
+
+#Merge num column onto rates
+ethnicity <- merge(ethnicity.rate, ethnicity.count, by=c("year", "category"))
+
 ##########################Merge data
-dat <- rbind(age, region[,colnames(age)])
+dat <- rbind(age, region[,colnames(age)], ethnicity[,colnames(age)])
 
 dat$year <- ordered(dat$year, 2008:2017)
 
