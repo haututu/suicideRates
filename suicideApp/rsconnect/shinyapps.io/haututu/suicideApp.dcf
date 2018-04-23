@@ -1,0 +1,12 @@
+name: suicideApp
+title: suicideApp
+username:
+account: haututu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 328123
+bundleId: 1332720
+url: https://haututu.shinyapps.io/suicideApp/
+when: 1524452517.44716
+asMultiple: FALSE
+asStatic: FALSE

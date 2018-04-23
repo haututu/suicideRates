@@ -65,14 +65,18 @@ server <- function(input, output) {
   })
   
   output$categorySelect <- renderUI({
+    
+    choices <- levels(
+      droplevels(
+        filter(dat, measure == input$measureSelect)$category
+        )
+      )
+    
     selectInput("categorySelect",
                 "Select category",
-                levels(
-                  droplevels(
-                    filter(dat, measure == input$measureSelect)$category
-                    )
-                  ),
-                multiple = TRUE)
+                choices = choices,
+                multiple = TRUE,
+                selected = choices[1])
     })
    
   output$distPlot <- renderPlotly({
