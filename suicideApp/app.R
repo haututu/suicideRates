@@ -99,7 +99,7 @@ server <- function(input, output) {
                 aes(x=category, y=rate)) +
            geom_bar(stat = "identity") +
            labs(
-             y = "Rate per 10,000"
+             y = "Rate per 100,000"
            ) +
            theme_classic() +
            theme(
@@ -116,7 +116,7 @@ server <- function(input, output) {
            geom_point() +
            geom_line() +
            labs(
-             y = "Rate per 10,000"
+             y = "Rate per 100,000"
              ) +
            theme_classic() +
            theme(
