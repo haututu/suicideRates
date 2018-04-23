@@ -35,9 +35,7 @@ ui <- fluidPage(
       selectInput("measureSelect",
                   "Select measure",
                   levels(dat$measure)),
-      selectInput("yearSelect",
-                  "Select year",
-                  levels(dat$year)),
+      uiOutput("yearSelect"),
       uiOutput("categorySelect"),
       
         
@@ -62,6 +60,18 @@ server <- function(input, output) {
       hide("categorySelect", anim = TRUE) 
       show("yearSelect", anim = TRUE, time = 1)
     }
+  })
+  
+  output$yearSelect <- renderUI({
+    choices <- levels(
+      droplevels(
+        filter(dat, measure == input$measureSelect)$year
+      )
+    )
+    
+    selectInput("yearSelect",
+                "Select year",
+                choices = choices)
   })
   
   output$categorySelect <- renderUI({

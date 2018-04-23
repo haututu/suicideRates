@@ -97,7 +97,7 @@ pop <- read.csv("regionalPopulation.csv") %>%
   mutate(year = as.factor(year))
 
 region <- full_join(region, pop, by = c("category", "year")) %>%
-  mutate(rate = num / pop * 10000, measure = factor("region")) %>%
+  mutate(rate = num / pop * 100000, measure = factor("region")) %>%
   select(-pop)
 
 ##########################Get ethnicity data
@@ -105,17 +105,7 @@ region <- full_join(region, pop, by = c("category", "year")) %>%
 ##########################Merge data
 dat <- rbind(age, region[,colnames(age)])
 
+dat$year <- ordered(dat$year, 2008:2017)
+
 saveRDS(dat, "suicideApp/dat.RDS")
-
-##########################Playing around with graphs
-ggplotly(ggplot(age, aes(x=year, y=rate, group=agegp, color=agegp)) +
-           geom_line() +
-           theme_classic()
-         )
-
-ggplotly(ggplot(filter(age, agegp != "Total"), aes(x=year, y=num, group=agegp, color=agegp)) +
-           geom_line() +
-           theme_minimal()
-         )
-
 
