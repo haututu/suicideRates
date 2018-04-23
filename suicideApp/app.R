@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(shinyjs)
 library(ggplot2)
 library(plotly)
 library(shinythemes)
@@ -16,6 +17,8 @@ dat <- readRDS("dat.RDS")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
+  
+  useShinyjs(),
   
    # Application title
    titlePanel("Suicide Stats Explorer"),
@@ -36,10 +39,14 @@ ui <- fluidPage(
         selectInput("yearSelect",
                     "Select year",
                     levels(dat$year)),
+        div(id = "banana",
         selectInput("categorySelect",
                     "Select category",
                     levels(dat$category),
-                    multiple = TRUE),
+                    multiple = TRUE)),
+        
+        textOutput("blah"),
+        
         actionButton("email", "Contact author")
          
       ),
@@ -53,8 +60,18 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
+  
+  observe({
+    if(input$viewSelect == "Time series") {
+      show("categorySelect") 
+      hide("yearSelect")
+    } else {
+      hide("categorySelect") 
+      show("yearSelect")
+    }
+  })
    
-   output$distPlot <- renderPlotly({
+  output$distPlot <- renderPlotly({
      if (input$viewSelect == "Cross section") {
        ggplotly(
          ggplot(filter(dat, 
