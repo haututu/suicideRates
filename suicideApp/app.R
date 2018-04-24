@@ -11,7 +11,6 @@ library(shiny)
 library(shinyjs)
 library(ggplot2)
 library(plotly)
-library(shinythemes)
 
 dat <- readRDS("dat.RDS")
 
