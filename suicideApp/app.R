@@ -117,6 +117,13 @@ server <- function(input, output) {
                  "Rate per 100,000",
                  "Total count"
                  )
+     
+     x <- ifelse(input$measureSelect == "ethnicity",
+                 "Ethnicity",
+                 ifelse(input$measureSelect == "age",
+                        "Age",
+                        "DHB Region")
+                 )
     
      if (input$viewSelect == "Cross section") {
        ggplotly(
@@ -127,11 +134,12 @@ server <- function(input, output) {
                 aes_string(x="category", y=input$varSelect)) +
            geom_bar(stat = "identity") +
            labs(
-             y = y
+             y = y,
+             x = x
            ) +
            theme_classic() +
            theme(
-             axis.text.x = element_text(angle = 45, hjust = 1)
+             axis.text.x = element_text(angle = 35, hjust = 1)
            )
        ) 
      } else {
@@ -144,11 +152,13 @@ server <- function(input, output) {
            geom_point() +
            geom_line() +
            labs(
-             y = y
+             y = y,
+             x = "Year"
              ) +
            theme_classic() +
            theme(
-             axis.text.x = element_text(angle = 45, hjust = 1)
+             axis.text.x = element_text(angle = 35, hjust = 1)
+             )
            )
          )
        }
