@@ -45,13 +45,14 @@ ui <- fluidPage(
       uiOutput("yearSelect"),
       
       uiOutput("categorySelect"),
-        
-      a(actionButton("email", 
-                   "Contact Author",
-                   icon = icon("envelope")),
-        href="mailto:taylor.winter00@gmail.com?Subject=Suicide%20app")
       
-      ),
+      a(actionButton("email", 
+                     "Contact Author",
+                     icon = icon("envelope"),
+                     width = "100%"),
+        href="mailto:taylor.winter00@gmail.com?Subject=Suicide%20app")
+    ),
+      
     # Show a plot of the generated distribution
     mainPanel(
       plotlyOutput("distPlot")
