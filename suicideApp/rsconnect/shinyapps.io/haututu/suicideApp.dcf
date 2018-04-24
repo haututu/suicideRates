@@ -5,8 +5,8 @@ account: haututu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 328123
-bundleId: 1335364
+bundleId: 1335370
 url: https://haututu.shinyapps.io/suicideApp/
-when: 1524564392.82346
+when: 1524564677.53141
 asMultiple: FALSE
 asStatic: FALSE

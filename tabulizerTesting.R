@@ -148,6 +148,7 @@ dat <- rbind(age, region[,colnames(age)], ethnicity[,colnames(age)])
 
 dat$year <- ordered(dat$year, 2008:2017)
 dat$num <- as.numeric(dat$num)
+dat$rate <- as.numeric(dat$rate)
 
 saveRDS(dat, "suicideApp/dat.RDS")
 
