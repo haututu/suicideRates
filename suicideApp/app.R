@@ -19,6 +19,9 @@ dat <- readRDS("dat.RDS")
 ui <- fluidPage(
   
   useShinyjs(),
+  
+  div(style="max-width: 1000px; margin-left: auto; margin-right: auto",
+      
   # Application title
   titlePanel("Suicide Stats Explorer"),
   
@@ -26,7 +29,7 @@ ui <- fluidPage(
     This app allows you to slice `n dice suicide stats found in PDFs on the <a href="https://coronialservices.justice.govt.nz/suicide/annual-suicide-statistics-since-2011/">Ministry of Justice website</a>. 
     It is a very early development version so likely to change substantially. 
     Hit the contact button below and fire any feedback or questions my way.</p>'),
-  
+      
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
@@ -50,18 +53,20 @@ ui <- fluidPage(
                      "Contact Author",
                      icon = icon("envelope"),
                      width = "100%"),
-        href="mailto:taylor.winter00@gmail.com?Subject=Suicide%20app")
+        href="mailto:taylor.winter00@gmail.com?Subject=Suicide%20app"),
+      width = 3
     ),
       
     # Show a plot of the generated distribution
     mainPanel(
-      plotlyOutput("distPlot")
+      plotlyOutput("distPlot"),
+      width = 9
       )
     ),
   
   HTML('<p><b>Please note</b> if you or someone you know is suffering and considering suicide then
        <a href="https://www.mentalhealth.org.nz/get-help/in-crisis/helplines/">follow this link now</a> for help.</p>')
-  )
+  ))
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
