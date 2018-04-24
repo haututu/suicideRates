@@ -72,7 +72,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   eventReactive(input$email,
-                {HTML('<a href="mailto:someone@example.com?Subject=Hello%20again" target="_top"></a>')})
+                {HTML('<a href="mailto:taylor.winter00@gmail.com?Subject=Suice%20app%20feedback" target="_top"></a>')})
   
   observe({
     if(input$viewSelect == "Time series") {
