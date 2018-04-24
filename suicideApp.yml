@@ -10,11 +10,7 @@
   changed_when: "r_install_package.stdout_lines[-1] is defined and r_install_package.stdout_lines[-1] == 'changed'"
   with_items:
     # packages needed for the app
-    - { name: 'SPARQL' }
-    - { name: 'plyr' }
-    - { name: 'reshape2' }
-    - { name: 'plotly' }
-    - { name: 'classInt' }
+    - { name: 'shinyjs' }
   when: item.state is undefined or item.state == 'present'
   tags:
     - r-packages-install
