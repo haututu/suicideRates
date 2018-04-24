@@ -147,6 +147,7 @@ ethnicity <- merge(ethnicity.rate, ethnicity.count, by=c("year", "category"))
 dat <- rbind(age, region[,colnames(age)], ethnicity[,colnames(age)])
 
 dat$year <- ordered(dat$year, 2008:2017)
+dat$num <- as.numeric(dat$num)
 
 saveRDS(dat, "suicideApp/dat.RDS")
 
