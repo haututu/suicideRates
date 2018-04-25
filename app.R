@@ -157,7 +157,6 @@ server <- function(input, output) {
            theme_classic() +
            theme(
              axis.text.x = element_text(angle = 35, hjust = 1)
-             )
            )
          )
        }
