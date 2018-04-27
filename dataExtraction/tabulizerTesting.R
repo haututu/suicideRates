@@ -150,5 +150,5 @@ dat$year <- ordered(dat$year, 2008:2017)
 dat$num <- as.numeric(dat$num)
 dat$rate <- as.numeric(dat$rate)
 
-saveRDS(dat, "suicideApp/dat.RDS")
+saveRDS(dat, "dat.RDS")
 
